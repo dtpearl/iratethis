@@ -1,0 +1,6 @@
+<h2>All comments</h2>
+
+<% @posts.each do |post| %>
+  <h3> Posted by user: <%= post.user_id %></h3>
+  <p><%= post.post_text %></p>
+<% end %>

@@ -1,0 +1,15 @@
+<!--
+
+Create a new comment
+<%# form_for @comment do |f| %>
+ -->
+<%= form_with :model => "comments", :action => create_comment_path do |f| %>
+
+<%= f.label :comment_text %>
+<%= f.text_area :comment_text %>
+
+<input name="post_id" value="<%= params[:id] %>">
+<%# :post_id, :value => params[:id] %>
+
+<%= f.submit "Add comment" %>
+<% end %>

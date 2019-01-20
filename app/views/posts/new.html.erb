@@ -1,3 +1,26 @@
+<!--
+
+Create a new post
+
+ -->
+
+
 <h2>Creat new post</h2>
 
 <h3>Form coming soon</h3>
+
+<%= form_for @post do |f| %>
+
+<%= f.label :post_image %>
+<%= f.url_field :post_image %>
+
+<%= f.label :post_text %>
+<%= f.text_area :post_text %>
+
+<%= f.select :user_id, User.pluck(:name, :id), :include_blank => true %>
+
+<%= f.label :likes %>
+<%= f.number_field :likes %>
+
+<%= f.submit "Post" %>
+<% end %>

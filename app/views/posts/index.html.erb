@@ -1,6 +1,13 @@
+<!--
+
+Index for posts
+
+ -->
+
+
 <h2>All posts</h2>
 
 <% @posts.each do |post| %>
-  <h3> Posted by user: <%= post.user_id %></h3>
+  <h3> Posted number: <%= link_to post.id, post %></h3>
   <p><%= post.post_text %></p>
 <% end %>

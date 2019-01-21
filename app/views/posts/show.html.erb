@@ -1,9 +1,14 @@
+<!--
+
+Show an individual post
+
+ -->
 <h2>Display A Post here</h2>
 
 <h3>New post coming soon</h3>
 
 
-<p>Username: </p>
+<p>Username: <%= link_to @post.user.name, user_path(@post.user) %> </p>
 
 <%= image_tag @post.post_image, :class => 'feature' %>
 
@@ -17,8 +22,6 @@
 
   <% end %>
 </ul>
-
-<%# render :partial => "new_comment" %>
 
 <%= form_tag create_comment_path(@post) do %>
 

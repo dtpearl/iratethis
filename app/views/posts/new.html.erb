@@ -15,10 +15,11 @@ Create a new post
 <%= f.label :post_text %>
 <%= f.text_area :post_text %>
 
+<%= f.label :user_id %>
 <%= f.select :user_id, User.pluck(:name, :id), :include_blank => true %>
 
 <%= f.label :likes %>
-<%= f.number_field :likes %>
+<%= f.number_field :likes, :value => '0' %>
 
 <%= f.submit "Post" %>
 <% end %>

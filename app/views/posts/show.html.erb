@@ -11,4 +11,19 @@
 
 <h4>Comments:</h4>
 
-<%= render :partial => 'comments/new', :path => 'new_comment_path' %>
+<ul>
+  <% @post.comments.each do |c| %>
+    <li><%= c.comment_text %></li>
+
+  <% end %>
+</ul>
+
+<%# render :partial => "new_comment" %>
+
+<%= form_tag create_comment_path(@post) do %>
+
+  <%= label_tag :comment_text %>
+  <%= text_area_tag :comment_text %>
+
+  <%= submit_tag "Add comment" %>
+<% end %>

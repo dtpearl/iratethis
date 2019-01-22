@@ -1,3 +1,31 @@
-<h2>Ceate New User</h2>
+<!--
+t.string "name"
+t.string "email"
+t.string "password"
+-->
 
-<p>Sign up form coming soon</p>
+<h2>Sign up</h2>
+
+<% if @user.errors.any? %>
+  <ol>
+    <%= @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ol>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, :required => 'true' %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, :required => 'true' %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, :required => 'true' %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, :required => 'true' %>
+
+  <%= f.submit "Sign Up" %>
+<% end %>

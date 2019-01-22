@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :authorise_user
+
   def index
     @users = User.all
   end
@@ -31,13 +33,3 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
-
-
-# if params[:file].present?
-#       # Then call Cloudinary's upload method, passing in the file in params
-#       req = Cloudinary::Uploader.upload(params[:file])
-#       # Using the public_id allows us to use Cloudinary's powerful image
-#       # transformation methods.
-#       animal.image = req["public_id"]
-#       animal.save
-#     end

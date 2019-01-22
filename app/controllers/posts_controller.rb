@@ -40,3 +40,12 @@ class PostsController < ApplicationController
   end
 
 end
+
+# if params[:file].present?
+#       # Then call Cloudinary's upload method, passing in the file in params
+#       req = Cloudinary::Uploader.upload(params[:file])
+#       # Using the public_id allows us to use Cloudinary's powerful image
+#       # transformation methods.
+#       animal.image = req["public_id"]
+#       animal.save
+#     end

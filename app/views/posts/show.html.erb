@@ -5,9 +5,6 @@ Show an individual post
  -->
 <h2>Display A Post here</h2>
 
-<h3>New post coming soon</h3>
-
-
 <p>Username: <%= link_to @post.user.name, user_path(@post.user) %> </p>
 
 <%= image_tag @post.post_image, :class => 'feature' %>

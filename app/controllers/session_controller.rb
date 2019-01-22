@@ -10,7 +10,7 @@ class SessionController < ApplicationController
       # Redirect a user to their posts page when they successfully login.
     else
       # If user can't login, redirect them to attempt to login again.
-      flash[:error] = "Invalid email or password."
+      flash[:error_message] = "Invalid email or password."
       redirect_to login_path
     end
   end

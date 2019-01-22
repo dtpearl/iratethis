@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  root :to => 'pages#home'
+  root :to => 'pages#index'
   resources :posts
   resources :comments
   resources :users

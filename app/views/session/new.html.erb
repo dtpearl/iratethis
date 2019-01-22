@@ -1,6 +1,6 @@
 <h1>Login</h1>
 
-<% if flash[:error_message].present? %>
+<% if flash[:error_message] %>
   <p><%= flash[:error_message] %></p>
 <% end %>
 
@@ -9,7 +9,7 @@
 <%= label_tag :email %>
 <%= email_field_tag :email %>
 
-<%= label_tag %>
+<%= label_tag :password %>
 <%= password_field_tag :password %>
 
 <%= submit_tag 'Sign In'%>

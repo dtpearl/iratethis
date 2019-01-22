@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   def fetch_user
     # Search for a user by their user_id if we can find one in the session hash
     @current_user = User.find_by :id => session[:user_id] if session[:user_id].present?
+
     # Clear the session user_id if no user is found.
     session[:user_id] = nil unless @current_user.present?
 

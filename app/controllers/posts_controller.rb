@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   #skip_before_action :verify_authenticity_token
   #skip_before_action :verify_authenticity_token, only: [:create]
+  before_action :authorise_user
 
   def index
     @posts = Post.all

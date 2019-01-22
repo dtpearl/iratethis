@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :comments
   resources :users
 
-
   post 'posts/:id/comments' => 'posts#create_comment', :as => 'create_comment'
   get '/login' => 'session#new'
   post '/login' => 'session#create'

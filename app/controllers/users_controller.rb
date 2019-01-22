@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :authorise_user
 
+
   def index
     @users = User.all
   end

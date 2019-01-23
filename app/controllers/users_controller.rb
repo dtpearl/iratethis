@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :authorise_user
+  before_action :authorise_user, except: [:new, :create]
 
 
   def index
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      # session[:user_id] = @user.id
+      session[:user_id] = @user.id
       redirect_to user_path(@user) # Future -> root_path
     else
       # Send user back to the creat new user page to fix their mistakes.

@@ -18,7 +18,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create post_params
+    @post = Post.new post_params
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload(params[:file])
+      @post.post_image = req["public_id"]
+      @post.likes = 0
+      @post.user_id = @current_user.id
+      @post.save
+    end
     redirect_to @post
   end
 
@@ -30,6 +37,21 @@ class PostsController < ApplicationController
     redirect_to post_path(post)
   end
 
+  def edit
+    @post = Post.find params[:id]
+  end
+
+  def update
+    post = Post.find params[:id]
+    post.post_text = params[:post_text]
+    redirect_to post
+  end
+
+  def destroy
+    post = Post.find params[:id]
+    post.destroy
+    redirect_to user_path(@current_user)
+  end
 
   private
   def post_params
@@ -41,12 +63,3 @@ class PostsController < ApplicationController
   end
 
 end
-
-# if params[:file].present?
-#       # Then call Cloudinary's upload method, passing in the file in params
-#       req = Cloudinary::Uploader.upload(params[:file])
-#       # Using the public_id allows us to use Cloudinary's powerful image
-#       # transformation methods.
-#       animal.image = req["public_id"]
-#       animal.save
-#     end

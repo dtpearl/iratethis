@@ -7,10 +7,11 @@ Show an individual post
 
 <p>Username: <%= link_to @post.user.name, user_path(@post.user) %> </p>
 
-<%= image_tag @post.post_image, :class => 'feature' %>
+<%= cl_image_tag(@post.post_image) %>
 
 <p>Post text: <%= @post.post_text %></p>
 
+<%= link_to "Edit post", edit_post_path %>
 <h4>Comments:</h4>
 
 <ul>

@@ -1,0 +1,15 @@
+<h2>Edit your post</h2>
+
+<p>Username: <%= link_to @post.user.name, user_path(@post.user) %> </p>
+
+<%= cl_image_tag(@post.post_image) %>
+
+<%= form_for @post do |f| %>
+
+  <%= f.label :post_text %>
+  <%= f.text_area :post_text %>
+
+  <%= f.submit "Post" %>
+<% end %>
+
+<%= link_to "Delete post", delete_post_path, :method => 'delete' %>

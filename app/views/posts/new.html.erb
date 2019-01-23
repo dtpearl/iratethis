@@ -2,24 +2,23 @@
 
 Create a new post
 
+
+<%# <%= f.label :user_id %> %>
+<%# <%= f.select :user_id, User.pluck(:name, :id), :include_blank => true %> %>
  -->
 
 
 <h2>Create new post</h2>
 
-<%= form_for @post do |f| %>
+<%= form_for(@post, :html => {:multipart => true}) do |f| %>
 
-<%= f.label :post_image %>
-<%= f.url_field :post_image %>
+  <%= f.label :post_image %>
+  <%= f.cl_image_upload :post_image %>
 
-<%= f.label :post_text %>
-<%= f.text_area :post_text %>
+  <%= f.label :post_text %>
+  <%= f.text_area :post_text %>
 
-<%= f.label :user_id %>
-<%= f.select :user_id, User.pluck(:name, :id), :include_blank => true %>
 
-<%= f.label :likes %>
-<%= f.number_field :likes, :value => '0' %>
 
-<%= f.submit "Post" %>
+  <%= f.submit "Post" %>
 <% end %>

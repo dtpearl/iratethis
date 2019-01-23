@@ -45,9 +45,9 @@ p2.comments << c4
 p4.comments << c6 << c7
 
 # posts and restaurants
-p1.restaurant << r1
-p2.restaurant << r2
-p3.restaurant << r1
-p4.restaurant << r3
-p5.restaurant << r4
-p6.restaurant << r1
+p1.restaurants << r1
+p2.restaurants << r2
+p3.restaurants << r1
+p4.restaurants << r3
+p5.restaurants << r4
+p6.restaurants << r1

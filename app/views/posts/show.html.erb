@@ -14,7 +14,7 @@ Show an individual post
   </div>
 
   <div class="col-md-4 my-5">
-    <p><strong><%= link_to @post.user.name, user_path(@post.user) %> • </strong> <%= @post.post_text %></p>
+    <p><strong><%= link_to @post.user.name, user_path(@post.user) %> • <%= @post.post_text %> </strong></p>
     <ul class="list-group list-group-flush border border-info rounded">
       <% @post.comments.each do |c| %>
         <% if c.user_id == @current_user.id %>
@@ -37,7 +37,7 @@ Show an individual post
       <%= label_tag :comment_text, "Add a comment" %>
       <%= text_area_tag :comment_text, nil, :class => "form-control mb-3" %>
 
-      <%= submit_tag "Add comment", :class => "btn btn-primary" %>
+      <%= submit_tag "Add comment", :class => "btn btn-primary w-100" %>
     <% end %>
 
   </div>

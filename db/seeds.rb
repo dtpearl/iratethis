@@ -39,10 +39,10 @@ u2.posts << p4 << p5
 u3.posts << p6
 
 # posts and comments
-p1.comments << c5
-p3.comments << c1 << c2 << c3
-p2.comments << c4
-p4.comments << c6 << c7
+# p1.comments << c5
+# p3.comments << c1 << c2 << c3
+# p2.comments << c4
+# p4.comments << c6 << c7
 
 # posts and restaurants
 p1.restaurants << r1

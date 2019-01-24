@@ -2,8 +2,14 @@
 
 <p><%= link_to "Share your beautiful food.", new_post_path %></p>
 
-
-<% @posts.each do |post| %>
-  <%= link_to cl_image_tag(post.post_image), post_path(post.id) %>
-  <p><%= post.post_text %></p>
-<% end %>
+<div class="row justify-content-center">
+  <div class="col-md-10">
+    <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-4 mb-4">
+        <%= link_to cl_image_tag(post.post_image, :class => "img-fluid w-100"), post_path(post.id) %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

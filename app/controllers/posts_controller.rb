@@ -30,11 +30,18 @@ class PostsController < ApplicationController
   end
 
   def create_comment
-    # @comment = Comment.create comment_params
-    @comment = Comment.create :comment_text => params[:comment_text]
+    @comment = Comment.new :comment_text => params[:comment_text]
+    @comment.user_id = @current_user.id
     post = Post.find params[:id]
     post.comments << @comment
     redirect_to post_path(post)
+  end
+
+  def delete_comment
+    @comments = Comment.where(:post_id => params[:id], :comment_by_id => @current_user.id)
+    @comments.last.destroy
+    redirect_to post_path(params[:id])
+    #raise "hell"
   end
 
   def edit

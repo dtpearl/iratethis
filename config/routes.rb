@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
 
   delete 'posts/:id' => 'posts#destroy', :as => 'delete_post'
+  delete 'posts/:id/comments' => 'posts#delete_comment', :as => 'delete_comment'
   post 'posts/:id/comments' => 'posts#create_comment', :as => 'create_comment'
   get '/login' => 'session#new'
   post '/login' => 'session#create'

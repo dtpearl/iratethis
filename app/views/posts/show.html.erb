@@ -1,29 +1,48 @@
 <!--
 
 Show an individual post
-
+if c.user == @current_user.id
+else
  -->
-<h2>Display A Post here</h2>
+<div class="row">
+  <div class="offset-md-1 col-md-6 my-5">
 
-<p>Username: <%= link_to @post.user.name, user_path(@post.user) %> </p>
+    <%= cl_image_tag(@post.post_image, :class => "img-fluid w-100") %>
 
-<%= cl_image_tag(@post.post_image) %>
+    <p><strong><%= link_to @post.user.name, user_path(@post.user) %> • </strong> <%= @post.post_text %></p>
 
-<p>Post text: <%= @post.post_text %></p>
+    <% if @post.user.id == @current_user.id %>
+      <%= link_to "Edit post", edit_post_path %>
+    <% end %>
+  </div>
 
-<%= link_to "Edit post", edit_post_path %>
-<h4>Comments:</h4>
+  <div class="col-md-4 my-5">
+    <h4>Comments:</h4>
 
-<ul>
-  <% @post.comments.each do |c| %>
-    <li><%= c.comment_text %></li>
-  <% end %>
-</ul>
+    <ul class="list-group list-group-flush border border-info rounded">
+      <% @post.comments.each do |c| %>
+        <% if c.user_id == @current_user.id %>
+            <li class="list-group-item list-group-item-info">
+              <strong><%= c.user.name %> • </strong>
+              <%= c.comment_text %>
+              <%= link_to 'x', delete_comment_path, :method => 'delete' %>
+            </li>
+        <% else %>
+          <li class="list-group-item list-group-item-info">
+            <strong><%= c.user.name %> • </strong>
+            <%= c.comment_text %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
 
-<%= form_tag create_comment_path(@post) do %>
+    <%= form_tag create_comment_path(@post) do %>
 
-  <%= label_tag :comment_text %>
-  <%= text_area_tag :comment_text %>
+      <%= label_tag :comment_text, "Add a comment" %>
+      <%= text_area_tag :comment_text, nil, :class => "form-control" %>
 
-  <%= submit_tag "Add comment" %>
-<% end %>
+      <%= submit_tag "Add comment" %>
+    <% end %>
+
+  </div>
+</div>

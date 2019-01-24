@@ -9,7 +9,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if @current_user.present?
+      redirect_to user_path(@current_user.id)
+    else
+      @user = User.new
+    end
   end
 
   def show
@@ -21,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user) # Future -> root_path
+      redirect_to user_path(@user)
     else
       # Send user back to the create new user page to fix their mistakes.
       render :new

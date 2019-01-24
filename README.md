@@ -16,6 +16,8 @@ Rails 5.2.2
 - gem 'jquery-rails'
 - gem 'rails_12factor', group: :production
 
+- gem 'rails-erd' - Draws a graph of your DB (Include it in development group gems)
+
 I used rails_12factor for deployment on Heroku.
 Find more information on rails_12factor on [github](https://github.com/heroku/rails_12factor).
 

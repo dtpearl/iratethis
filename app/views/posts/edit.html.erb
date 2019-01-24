@@ -1,3 +1,8 @@
+<!--
+
+Edit a post
+
+-->
 <div class="row">
   <div class="offset-md-4 col-md-4 text-center">
     <h1>Edit your post</h1>
@@ -11,7 +16,7 @@
 
     <%= form_for @post do |f| %>
       <div class="form-label-group my-3">
-        <%= f.label :post_text %>
+        <%= f.label :post_text, "Your comment" %>
         <%= f.text_area :post_text, :required => true, :class => "form-control " %>
       </div>
       <div class="form-label-group my-3">
@@ -19,6 +24,6 @@
         <% end %>
       </div>
 
-    <%= link_to "Delete post", delete_post_path, :method => 'delete', :class => 'text-danger' %>
+    <%= link_to "Delete post", delete_post_path, :method => 'delete', :class => 'text-danger', :data => {:confirm => 'Are you sure?'} %>
   </div>
 </div>

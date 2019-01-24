@@ -1,15 +1,12 @@
 <!--
 
 Show an individual post
-if c.user == @current_user.id
-else
+
  -->
 <div class="row">
   <div class="offset-md-1 col-md-6 my-5">
 
     <%= cl_image_tag(@post.post_image, :class => "img-fluid w-100") %>
-
-    <p><strong><%= link_to @post.user.name, user_path(@post.user) %> • </strong> <%= @post.post_text %></p>
 
     <% if @post.user.id == @current_user.id %>
       <%= link_to "Edit post", edit_post_path %>
@@ -17,8 +14,7 @@ else
   </div>
 
   <div class="col-md-4 my-5">
-    <h4>Comments:</h4>
-
+    <p><strong><%= link_to @post.user.name, user_path(@post.user) %> • </strong> <%= @post.post_text %></p>
     <ul class="list-group list-group-flush border border-info rounded">
       <% @post.comments.each do |c| %>
         <% if c.user_id == @current_user.id %>
@@ -39,9 +35,9 @@ else
     <%= form_tag create_comment_path(@post) do %>
 
       <%= label_tag :comment_text, "Add a comment" %>
-      <%= text_area_tag :comment_text, nil, :class => "form-control" %>
+      <%= text_area_tag :comment_text, nil, :class => "form-control mb-3" %>
 
-      <%= submit_tag "Add comment" %>
+      <%= submit_tag "Add comment", :class => "btn btn-primary" %>
     <% end %>
 
   </div>

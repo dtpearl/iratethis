@@ -13,15 +13,47 @@
 
   <body>
 
-    <div class="container">
-      <nav>
-        <% if @current_user.present? %>
-            <%= link_to "Sign Out #{ @current_user.name }", login_path, :method => 'delete' %>
+
+
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top py-3">
+        <a class="navbar-brand" href="#">iRateThis</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+
+            <% if @current_user.present? %>
+              <li class="nav-item">
+                <%= link_to "Sign Out #{ @current_user.name }", login_path, :method => 'delete', :class => 'nav-link' %>
+                <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
+              </li>
             <% else %>
-              <%= link_to 'Sign Up', new_user_path %> | 
-              <%= link_to 'Sign In', login_path %>
-        <% end %>
+              <li class="nav-item">
+                <%= link_to 'Sign Up', new_user_path, :class => 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Sign In', login_path, :class => 'nav-link' %>
+              </li>
+            <% end %>
+            <% if @current_user.present? %>
+              <li class="nav-item">
+                <%= link_to 'Your meals', user_path(@current_user.id), :class => 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Dining Room', posts_path, :class => 'nav-link' %>
+              </li>
+              <li class="nav-item">
+              <%= link_to "Share your beautiful food.", new_post_path, :class => 'nav-link' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </nav>
+
+    <div class="container">
 
       <%= yield %>
 

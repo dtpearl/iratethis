@@ -1,7 +1,5 @@
 class PostsController < ApplicationController
 
-  #skip_before_action :verify_authenticity_token
-  #skip_before_action :verify_authenticity_token, only: [:create]
   before_action :authorise_user
 
   def index
@@ -41,7 +39,6 @@ class PostsController < ApplicationController
     @comments = Comment.where(:post_id => params[:id], :user_id => @current_user.id)
     @comments.last.destroy
     redirect_to post_path(params[:id])
-    #raise "hell"
   end
 
   def edit

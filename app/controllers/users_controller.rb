@@ -2,9 +2,9 @@ class UsersController < ApplicationController
 
   before_action :authorise_user, except: [:new, :create]
 
-
+  # Keeping this for future admin login functionality.
   def index
-    @users = User.all
+    #@users = User.all
     redirect_to root_path
   end
 
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user) # Future -> root_path
     else
-      # Send user back to the creat new user page to fix their mistakes.
+      # Send user back to the create new user page to fix their mistakes.
       render :new
     end
 

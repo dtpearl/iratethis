@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authorise_user
 
   def index
-    @posts = Post.all
+    @posts = Post.all.reverse
   end
 
   def show

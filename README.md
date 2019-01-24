@@ -1,24 +1,41 @@
-# README
+# Project 1 - iRateThis
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+In a nutshell, Instagram with only food pics.
 
-Things you may want to cover:
+## Things you want to know:
 
-* Ruby version
+### Ruby version
+Ruby 2.5.3
+Rails 5.2.2
 
-* System dependencies
+### Configuration
 
-* Configuration
+#### Gems included
+- gem 'cloudinary'
+- gem 'bootstrap'
+- gem 'jquery-rails'
+- gem 'rails_12factor', group: :production
 
-* Database creation
+I used rails_12factor for deployment on Heroku.
+Find more information on rails_12factor on [github](https://github.com/heroku/rails_12factor).
 
-* Database initialization
+#### Link to the site
+The page is hosted on Heroku [here](https://iratethis.herokuapp.com/).
 
-* How to run the test suite
+#### Database initialization
 
-* Services (job queues, cache servers, search engines, etc.)
+- Running `rails db:seed` provides a small number of entries to start you off.
 
-* Deployment instructions
+- The Comment model is controlled from the PostsController.
 
-* ...
+#### Notable points
+
+- All styling is done with Bootstrap.
+
+#### Future plans
+
+- Allow users to input the name and the address of the restaurant/cafe where the food was purchased.
+
+- Integrate Restaurant locations with Google Maps API
+
+- Included "likes" & "followers/friends" functionality.

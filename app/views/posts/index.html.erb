@@ -7,7 +7,16 @@ Index for posts
 
 <h2>All posts</h2>
 
-<% @posts.each do |post| %>
-  <h3> Posted number: <%= link_to post.id, post %></h3>
-  <p><%= post.post_text %></p>
-<% end %>
+<div class="row justify-content-center">
+  <div class="col-md-10">
+    <div class="row">
+
+      <% @posts.each do |post| %>
+      <div class="col-md-4 mb-4">
+        <%= link_to cl_image_tag(post.post_image, :class => "img-fluid w-100"), post_path(post.id) %>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

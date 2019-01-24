@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   end
 
   def delete_comment
-    @comments = Comment.where(:post_id => params[:id], :comment_by_id => @current_user.id)
+    @comments = Comment.where(:post_id => params[:id], :user_id => @current_user.id)
     @comments.last.destroy
     redirect_to post_path(params[:id])
     #raise "hell"

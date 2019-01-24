@@ -5,29 +5,44 @@ t.string "name"
 t.string "email"
 t.string "password"
 -->
+<div class="row">
+  <div class="offset-md-8 col-md-3 text-center">
+    <h3>Would you like to make a reservation?</h3>
+  </div>
+</div>
 
-<h2>Sign up</h2>
-
-<% if @user.errors.any? %>
-  <ol>
-    <%= @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+<div class="row">
+  <div class="offset-md-4 col-md-3">
+    <% if @user.errors.any? %>
+      <ol>
+        <%= @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ol>
     <% end %>
-  </ol>
-<% end %>
+  </div>
+</div>
 
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, :required => 'true' %>
-
-  <%= f.label :email %>
-  <%= f.email_field :email, :required => 'true' %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password, :required => 'true' %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, :required => 'true' %>
-
-  <%= f.submit "Sign Up" %>
-<% end %>
+<div class="row">
+  <div class="offset-md-8 col-md-3 border border-primary rounded mb-5">
+    <%= form_for @user do |f| %>
+      <div class="form-label-group my-3">
+        <%= f.label :name %>
+        <%= f.text_field :name, :required => 'true', :class => "form-control" %>
+      </div>
+      <div class="form-label-group my-3">
+        <%= f.label :email %>
+        <%= f.email_field :email, :required => 'true', :class => "form-control" %>
+      </div>
+      <div class="form-label-group my-3">
+        <%= f.label :password %>
+        <%= f.password_field :password, :required => 'true', :class => "form-control" %>
+      </div>
+      <div class="form-label-group my-3">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, :required => 'true', :class => "form-control" %>
+      </div>
+        <%= f.submit "Sign Up", :class => "btn btn-primary w-100 mb-3" %>
+    <% end %>
+  </div>
+</div>
